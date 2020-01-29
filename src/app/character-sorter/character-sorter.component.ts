@@ -15,6 +15,7 @@ export class CharacterSorterComponent {
 
     public availableCharacters: Character[] = [];
     public sortedList: Character[] = [];
+    public previousResults: Character[];
 
     public started = false;
     private locked = false;
@@ -23,6 +24,16 @@ export class CharacterSorterComponent {
     public currentCharacter: Character;
     public currentComparator: Character;
     private currentSet: Character[] = [];
+
+    constructor() {
+        if (window.localStorage.fgocharactersorter) {
+            this.previousResults = JSON.parse(window.localStorage.fgocharactersorter);
+        }
+    }
+
+    public loadPreviousResults(): void {
+        this.complete.emit(this.previousResults);
+    }
 
     public percentageComplete(set): number {
         return Math.floor(set.length * 100 / this.total);
@@ -104,6 +115,7 @@ export class CharacterSorterComponent {
             this.locked = false;
         } else {
             this.complete.emit(this.sortedList);
+            window.localStorage.fgocharactersorter = JSON.stringify(this.sortedList);
         }
     }
 

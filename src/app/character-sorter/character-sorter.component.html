@@ -17,6 +17,11 @@
         >
             Deselect all
         </button>
+        <button *ngIf="previousResults"
+            (click)="loadPreviousResults()"
+        >
+            Load most recent results
+        </button>
     </div>
     <p *ngIf="!canStart(initialCharacterList)"
         class="alert"
