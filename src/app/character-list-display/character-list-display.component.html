@@ -1,0 +1,14 @@
+<h1>Your character rankings:</h1>
+<hr />
+<ul>
+    <li *ngFor="let character of characterList; let i = index"
+        [ngClass]="{
+            'featured': i < 3
+        }"
+    >
+        <p>{{ (i + 1) + '. ' + character.name }}</p>
+        <img *ngIf="i < 3"
+            [attr.src]="character.imageUrl"
+        />
+    </li>
+</ul>

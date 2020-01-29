@@ -1,0 +1,87 @@
+<h1>Character sorter</h1>
+<hr />
+<div *ngIf="!started"
+    id="filter-view"
+>
+    <h2>Who do you want to exclude from sorting?</h2>
+    <div
+        class="button-group"
+    >
+        <button
+            (click)="selectAll(false)"
+        >
+            Select all
+        </button>
+        <button
+            (click)="selectAll(true)"
+        >
+            Deselect all
+        </button>
+    </div>
+    <p *ngIf="!canStart(initialCharacterList)"
+        class="alert"
+    >
+        Can't start with less than 2 characters to sort. Please change your selections.
+    </p>
+    <div
+        class="character-list"
+    >
+        <div *ngFor="let character of initialCharacterList"
+            class="character-card"
+            [attr.title]="character.name"
+            [ngClass]="{
+                'excluded': !!character.excluded
+            }"
+            (click)="character.excluded = !character.excluded"
+        >
+            <img [attr.src]="character.imageUrl" />
+            <h3>{{ character.name }}</h3>
+        </div>
+    </div>
+    <button
+        class="start-button"
+        [disabled]="!canStart(initialCharacterList)"
+        (click)="start()"
+    >
+        Start sorting
+    </button>
+</div>
+<div *ngIf="started"
+    id="progress"
+>
+    {{ percentageComplete(sortedList) + '% Completed' }}
+</div>
+<div *ngIf="started"
+    id="sorter-view"
+>
+    <div
+        class="character-card"
+        [attr.title]="currentCharacter.name"
+        (click)="selectOption(currentCharacter)"
+    >
+        <img [attr.src]="currentCharacter.imageUrl" />
+        <h3>{{ currentCharacter.name }}</h3>
+    </div>
+    <img
+        class="versus-divider"
+        src="https://img.freepik.com/free-vector/versus-logo-vs-letters-sports-fight-competition_100456-150.jpg?size=338&ext=jpg"
+    />
+    <div
+        class="character-card"
+        [attr.title]="currentComparator.name"
+        (click)="selectOption(currentComparator)"
+    >
+        <img [attr.src]="currentComparator.imageUrl" />
+        <h3>{{ currentComparator.name }}</h3>
+    </div>
+</div>
+<div
+    id="tie-section"
+>
+    <button
+        class="tie-button"
+        (click)="selectOption(undefined)"
+    >
+        Tie
+    </button>
+</div>

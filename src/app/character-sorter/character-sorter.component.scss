@@ -1,0 +1,115 @@
+hr {
+    margin-bottom: 50px;
+}
+
+.button-group {
+    display: flex;
+    button {
+        margin: 10px;
+    }
+}
+
+button {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #212327;
+    background-color: #fff;
+    border: 1px solid #cdcfd2;
+    border-radius: 3px;
+
+    &:hover {
+        color: inherit;
+        border: 1px solid #d2d2d2;
+        background-color: #eeeeef;
+    }
+
+    &[disabled] {
+        color: #cacaca;
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: .65;
+    }
+}
+
+#progress {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.versus-divider {
+    max-height: 145px;
+}
+
+.alert {
+    background-color: rgba(239, 130, 130, 0.5);
+    color: #D83E3E;
+    padding: 5px;
+    width: 100%;
+    border: inset 1px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.character-list {
+    display: flex;
+    max-width: 1350px;
+    max-height: 450px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.character-card {
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    width: 300px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eeeeef;
+    }
+
+    &.excluded {
+        opacity: 0.1;
+    }
+
+    h3 {
+        margin-left: 10px;
+        padding-top: 30px;
+        user-select: none;
+    }
+}
+
+.start-button {
+    margin: 10px;
+    margin-top: 30px;
+}
+
+#sorter-view, #tie-section {
+    display: flex;
+    justify-content: center;
+}
+.tie-button {
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 15px;
+}

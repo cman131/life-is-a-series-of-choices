@@ -1,0 +1,13 @@
+<div
+  id="main-content"
+>
+  <character-sorter *ngIf="!sorted"
+    [initialCharacterList]="characterList"
+    (complete)="charactersSorted($event)"
+  >
+  </character-sorter>
+  <character-list-display *ngIf="sorted"
+    [characterList]="sortedCharacterList"
+  >
+  </character-list-display>
+</div>
