@@ -22,6 +22,25 @@
         >
             Load most recent results
         </button>
+        <label
+            id="limit-checkbox"
+        >
+            Limit results?
+            <input
+                type="checkbox"
+                [(ngModel)]="shouldLimit"
+            />
+        </label>
+        <label *ngIf="shouldLimit"
+            id="limit-input"
+        >
+            Limit to top: 
+            <input
+                min="1"
+                type="number"
+                [(ngModel)]="limit"
+            />
+        </label>
     </div>
     <p *ngIf="!canStart(initialCharacterList)"
         class="alert"

@@ -297,7 +297,8 @@ export class FateData {
         return this.fateGrandOrderCharacters.map(character => ({
             name: character[1],
             imageUrl: 'https://i.imgur.com/' + character[3],
-            excluded: character[0] === 0
+            excluded: character[0] === 0,
+            tied: []
         }));
     }
 }

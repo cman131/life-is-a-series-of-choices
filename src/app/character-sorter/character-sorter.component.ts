@@ -17,6 +17,9 @@ export class CharacterSorterComponent {
     public sortedList: Character[] = [];
     public previousResults: Character[];
 
+    public shouldLimit = true;
+    public limit = 10;
+
     public started = false;
     private locked = false;
     private total: number;
@@ -70,7 +73,7 @@ export class CharacterSorterComponent {
         this.locked = true;
         if (!character) {
             this.currentSet = [];
-            this.insertCharacter(this.currentCharacter, this.currentComparator, false);
+            this.insertCharacter(this.currentCharacter, this.currentComparator, false, true);
         } else if (character !== this.currentCharacter) {
             this.currentSet = this.currentSet.slice(this.currentSet.indexOf(this.currentComparator) + 1, this.currentSet.length);
             if (this.currentSet.length === 0) {
@@ -90,9 +93,12 @@ export class CharacterSorterComponent {
         }
     }
 
-    private insertCharacter(characterToInsert: Character, pivot: Character, beforePivot) {
+    private insertCharacter(characterToInsert: Character, pivot: Character, beforePivot, tied = false) {
         const indexOfPivot = this.sortedList.indexOf(pivot);
-        if (beforePivot) {
+        if (tied) {
+            pivot.tied.push(characterToInsert);
+        }
+        else if (beforePivot) {
             this.sortedList = [
                 ...this.sortedList.slice(0, indexOfPivot),
                 characterToInsert,
@@ -106,6 +112,9 @@ export class CharacterSorterComponent {
                 characterToInsert,
                 ...this.sortedList.slice(indexOfPivot + 1, this.sortedList.length)
             ];
+        }
+        if (this.shouldLimit) {
+            this.sortedList = this.sortedList.slice(0, this.limit);
         }
 
         if (this.availableCharacters.length > 0) {

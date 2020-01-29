@@ -116,3 +116,16 @@ button {
     padding-right: 50px;
     font-size: 15px;
 }
+#limit-input {
+    margin: 10px;
+    margin-top: 16px;
+    input {
+        max-width: 40px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+}
+#limit-checkbox {
+    margin: 10px;
+    margin-top: 20px;
+}

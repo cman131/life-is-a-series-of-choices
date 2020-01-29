@@ -6,9 +6,11 @@
             'featured': i < 3
         }"
     >
-        <p>{{ (i + 1) + '. ' + character.name }}</p>
-        <img *ngIf="i < 3"
-            [attr.src]="character.imageUrl"
-        />
+        <p>{{ getNames(i, character) }}</p>
+        <div *ngIf="i < 3">
+            <img *ngFor="let imageUrl of getImageUrls(character)"
+                [attr.src]="imageUrl"
+            />
+        </div>
     </li>
 </ul>
